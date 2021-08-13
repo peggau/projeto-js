@@ -1253,3 +1253,259 @@ function ticketMedio() {
 }
 
 ticketMedio();
+
+
+// 11 
+// Somatória de itens por departamento (você 
+//deverá retornar um objeto contendo o nome do departamento e o total de itens nele - 
+//Novamente considere os produtos “EM ESTOQUE” - e é apenas a somatória da quantidade de itens)
+
+function SomatoriaPorDepartamento() {
+    const somatorioFiltrado = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    listaProdutos.map((produto) => {
+        if (produto.qtdEstoque > 0) {
+            switch (produto.departamento.nomeDepto) {
+                case 'Adaptadores':
+                    somatorioFiltrado[0] += produto.qtdEstoque;
+                    break;
+                case 'Ferramentas':
+                    somatorioFiltrado[1] += produto.qtdEstoque;
+                    break;
+                case 'Eletronicos':
+                    somatorioFiltrado[2] += produto.qtdEstoque;
+                    break;
+                case 'Acessorios':
+                    somatorioFiltrado[3] += produto.qtdEstoque;
+                    break;
+                case 'Casa':
+                    somatorioFiltrado[4] += produto.qtdEstoque;
+                    break;
+                case 'Moveis':
+                    somatorioFiltrado[5] += produto.qtdEstoque;
+                    break;
+                case 'Tablets e Celulares':
+                    somatorioFiltrado[6] += produto.qtdEstoque;
+                    break;
+                case 'Games':
+                    somatorioFiltrado[7] += produto.qtdEstoque;
+                    break;
+                case 'Informatica':
+                    somatorioFiltrado[8] += produto.qtdEstoque;
+                    break;
+                default:
+                    console.log('Departamento não encontrado');
+                    break;
+            }
+        }
+
+    });
+
+    const objDep = [
+        {
+            Departamento: "Adaptadores",
+            Somatorio: somatorioFiltrado[0]
+        },
+        {
+            Departamento: "Ferramentas",
+            Somatorio: somatorioFiltrado[1]
+        },
+        {
+            Departamento: "Eletronicos",
+            Somatorio: somatorioFiltrado[2]
+        },
+        {
+            Departamento: "Acessorios",
+            Somatorio: somatorioFiltrado[3]
+        },
+        {
+            Departamento: "Casa",
+            Somatorio: somatorioFiltrado[4]
+        },
+        {
+            Departamento: "Moveis",
+            Somatorio: somatorioFiltrado[5]
+        },
+        {
+            Departamento: "Tablets e Celulares",
+            Somatorio: somatorioFiltrado[6]
+        },
+        {
+            Departamento: "Games",
+            Somatorio: somatorioFiltrado[7]
+        },
+        {
+            Departamento: "Informatica",
+            Somatorio: somatorioFiltrado[8]
+        },
+
+    ]
+    return objDep;
+
+}
+
+console.log(SomatoriaPorDepartamento());
+
+/////////////////////// 12
+
+function InventarioPorDepartamento() {
+    const inventarioFiltrado = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    listaProdutos.map((produto) => {
+        switch (produto.departamento.nomeDepto) {
+            case 'Adaptadores':
+                inventarioFiltrado[0] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Ferramentas':
+                inventarioFiltrado[1] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Eletronicos':
+                inventarioFiltrado[2] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Acessorios':
+                inventarioFiltrado[3] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Casa':
+                inventarioFiltrado[4] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Moveis':
+                inventarioFiltrado[5] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Tablets e Celulares':
+                inventarioFiltrado[6] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Games':
+                inventarioFiltrado[7] += produto.qtdEstoque * produto.preco;
+                break;
+            case 'Informatica':
+                inventarioFiltrado[8] += produto.qtdEstoque * produto.preco;
+                break;
+            default:
+                console.log('Departamento não encontrado');
+                break;
+        }
+
+    });
+
+    const objDep = [
+        {
+            Departamento: "Adaptadores",
+            Inventario: inventarioFiltrado[0]
+        },
+        {
+            Departamento: "Ferramentas",
+            Inventario: inventarioFiltrado[1]
+        },
+        {
+            Departamento: "Eletronicos",
+            Inventario: inventarioFiltrado[2]
+        },
+        {
+            Departamento: "Acessorios",
+            Inventario: inventarioFiltrado[3]
+        },
+        {
+            Departamento: "Casa",
+            Inventario: inventarioFiltrado[4]
+        },
+        {
+            Departamento: "Moveis",
+            Inventario: inventarioFiltrado[5]
+        },
+        {
+            Departamento: "Tablets e Celulares",
+            Inventario: inventarioFiltrado[6]
+        },
+        {
+            Departamento: "Games",
+            Inventario: inventarioFiltrado[7]
+        },
+        {
+            Departamento: "Informatica",
+            Inventario: inventarioFiltrado[8]
+        },
+
+    ]
+    return objDep;
+};
+
+console.log(InventarioPorDepartamento());
+
+//////////////// 13 - ticket médio por departamento
+
+function TicketPorDepartamento() {
+    const inventario = InventarioPorDepartamento();
+    const qtdProdutos = SomatoriaPorDepartamento();
+    const objDep = [
+        {
+            Departamento: "Adaptadores",
+            Ticket: inventario[0].Inventario / qtdProdutos[0].Somatorio
+        },
+        {
+            Departamento: "Ferramentas",
+            Ticket: inventario[1].Inventario / qtdProdutos[1].Somatorio
+        },
+        {
+            Departamento: "Eletronicos",
+            Ticket: inventario[2].Inventario / qtdProdutos[2].Somatorio
+        },
+        {
+            Departamento: "Acessorios",
+            Ticket: inventario[3].Inventario / qtdProdutos[3].Somatorio
+        },
+        {
+            Departamento: "Casa",
+            Ticket: inventario[4].Inventario / qtdProdutos[4].Somatorio
+        },
+        {
+            Departamento: "Moveis",
+            Ticket: inventario[5].Inventario / qtdProdutos[5].Somatorio
+        },
+        {
+            Departamento: "Tablets e Celulares",
+            Ticket: inventario[6].Inventario / qtdProdutos[6].Somatorio
+        },
+        {
+            Departamento: "Games",
+            Ticket: inventario[7].Inventario / qtdProdutos[7].Somatorio
+        },
+        {
+            Departamento: "Informatica",
+            Ticket: inventario[8].Inventario / qtdProdutos[8].Somatorio
+        },
+
+    ]
+    console.log(objDep);
+};
+
+TicketPorDepartamento();
+
+////////////////////// 14 -
+
+const DepartamentoMaisValioso = () => {
+    const departamentos = InventarioPorDepartamento();
+    let posicaoMaior = 0;
+
+    departamentos.map((departamento, index) => {
+        if (departamento.Inventario > departamentos[posicaoMaior].Inventario) {
+            posicaoMaior = index;
+        }
+    })
+    console.log('O departamento mais valioso é', departamentos[posicaoMaior]);
+}
+
+DepartamentoMaisValioso();
+
+////////////////////// 15 -
+
+const DepartamentoMenosValioso = () => {
+    const departamentos = InventarioPorDepartamento();
+    let posicaoMenor = 0;
+
+    departamentos.map((departamento, index) => {
+        if (departamento.Inventario < departamentos[posicaoMenor].Inventario) {
+            posicaoMenor = index;
+        }
+    })
+    console.log('O departamento menos valioso é', departamentos[posicaoMenor]);
+}
+
+DepartamentoMenosValioso();
